@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Menu, Search, User } from "react-feather";
 
-import { COLORS, QUERIES, WEIGHTS } from "../../constants";
+import { QUERIES } from "../../constants";
 
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import Logo from "../Logo";
@@ -83,41 +83,43 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-bottom: 48px;
 
   @media ${QUERIES.tabletAndUp} {
-    justify-content: space-between;
     margin-top: 48px;
     margin-bottom: 72px;
   }
 
   @media ${QUERIES.laptopAndUp} {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     margin-top: 16px;
   }
 `;
 
-const DesktopActionGroup = styled.div`
+const DesktopActionGroup = styled(ActionGroup)`
   display: none;
 
   @media ${QUERIES.laptopAndUp} {
     display: flex;
-    gap: 24px;
   }
 `;
 
 const SubscribeWrapper = styled.div`
-  position: relative;
+  display: none;
+
+  @media ${QUERIES.laptopAndUp} {
+    position: relative;
+    display: revert;
+    justify-self: end;
+  }
 `;
 
 const SubLink = styled.a`
-  width: fit-content;
+  width: 100%;
   position: absolute;
-  left: 0;
-  right: 0;
   margin-top: 8px;
-  margin-left: auto;
-  margin-right: auto;
-  color ${COLORS.gray[900]}:
-  font-size: 14px;
+  color: var(--color-gray-900):
+  font-size: 0.875rem;
   font-style: italic;
-  font-weight: ${WEIGHTS.normal};
+  text-align: center;
   text-decoration: underline;
 `;
 
