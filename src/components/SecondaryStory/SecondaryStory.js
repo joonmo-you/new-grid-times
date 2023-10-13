@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
@@ -16,8 +16,8 @@ const SecondaryStory = ({ id, title, image, location, abstract }) => {
 const Wrapper = styled.article`
   display: grid;
   grid-template-areas:
-    'image heading'
-    'image abstract';
+    "image heading"
+    "image abstract";
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
@@ -42,9 +42,16 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  display: -webkit-box;
   grid-area: abstract;
-  font-size: 1rem;
+  /* Prevent the paragraph from stretching */
+  align-self: start;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   white-space: pre-wrap;
+  /* Neccesary for line-clamping */
+  overflow: hidden;
+  font-size: 1rem;
 `;
 
 export default SecondaryStory;
