@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import { QUERIES } from "../../constants";
-
 const MiniStory = ({ id, image, title }) => {
   return (
     <a href={`/story/${id}`}>
@@ -18,10 +16,6 @@ const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  @media ${QUERIES.tabletAndUp} {
-    min-width: 200px;
-  }
 `;
 
 const Image = styled.img`
