@@ -1,9 +1,11 @@
-import React from 'react';
-import { Twitter, Facebook } from 'react-feather';
-import styled from 'styled-components/macro';
-import MaxWidthWrapper from '../MaxWidthWrapper';
+import React from "react";
+import { Twitter, Facebook } from "react-feather";
+import styled from "styled-components/macro";
 
-import VisuallyHidden from '../VisuallyHidden';
+import { QUERIES } from "../../constants";
+
+import MaxWidthWrapper from "../MaxWidthWrapper";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Footer = () => {
   return (
@@ -25,15 +27,11 @@ const Footer = () => {
           </nav>
           <Social>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Facebook
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Facebook</VisuallyHidden>
               <Facebook size={20} />
             </a>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Twitter
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Twitter</VisuallyHidden>
               <Twitter size={20} />
             </a>
           </Social>
@@ -119,9 +117,7 @@ const Footer = () => {
         <MaxWidthWrapper>
           <Subfooter>
             <Logo href="/">New Grid Times</Logo>
-            <Disclaimer>
-              © 2021 Fake Company Ltd. All Rights Reserved
-            </Disclaimer>
+            <Disclaimer>© 2021 Fake Company Ltd. All Rights Reserved</Disclaimer>
           </Subfooter>
         </MaxWidthWrapper>
       </SubfooterWrapper>
@@ -144,6 +140,15 @@ const TopRow = styled.div`
   font-size: 0.875rem;
   border-bottom: 1px solid var(--color-gray-700);
   padding: 24px 0;
+
+  @media ${QUERIES.tabletAndUp} {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    justify-content: end;
+  }
 `;
 
 const Social = styled.div`
@@ -170,6 +175,17 @@ const MainNavArea = styled.div`
   gap: 32px;
   padding: 32px 0 48px;
   text-align: center;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: grid;
+    flex-direction: revert;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-items: start;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  }
 `;
 
 const MainNavHeading = styled.h2`
@@ -177,12 +193,20 @@ const MainNavHeading = styled.h2`
   font-weight: var(--font-weight-bold);
   color: var(--color-gray-300);
   margin-bottom: 8px;
+
+  @media ${QUERIES.tabletAndUp} {
+    text-align: start;
+  }
 `;
 
 const MainNavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  @media ${QUERIES.tabletAndUp} {
+    align-items: start;
+  }
 `;
 
 const SubfooterWrapper = styled.div`
@@ -196,6 +220,10 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${QUERIES.laptopAndUp} {
+    align-items: start;
+  }
 `;
 
 const Logo = styled.a`
